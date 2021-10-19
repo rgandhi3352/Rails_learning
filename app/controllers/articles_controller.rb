@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      redirect_to @article
+      redirect_to action: :index
     else
       render :new
     end
@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
-      redirect_to @article
+      redirect_to action: :index
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.destroy
 
-    redirect_to root_path
+    redirect_to action: :index
   end
 
   private
